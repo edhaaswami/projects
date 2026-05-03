@@ -1,0 +1,139 @@
+<!DOCTYPE html> <!-- Declares the document type as HTML5 -->
+<html lang="en"> <!-- Root element; 'lang="en"' tells browsers/search engines the language is English -->
+<head>
+    <meta charset="UTF-8"> <!-- Sets character encoding to UTF-8 to support most text characters -->
+    <title>Facebook Clone</title> <!-- The text that appears on the browser tab -->
+
+    <!-- Bootstrap CSS: A framework used for responsive layout (grids) and pre-styled components (buttons, inputs) -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <style>
+        /* Custom styles for Facebook look */
+
+        body {
+            background-color: #f0f2f5; /* Sets the light grey 'Facebook' background color */
+        }
+
+        .fb-header {
+            background-color: #1877f2; /* The specific hex code for Facebook's signature blue */
+            color: white;              /* Changes all text inside the header to white */
+            padding: 10px;             /* Adds internal space inside the header bar */
+        }
+
+        .fb-title {
+            font-size: 32px;           /* Makes the 'facebook' text large */
+            font-weight: bold;         /* Makes the font thick/bold */
+        }
+
+        .form-control {
+            margin-bottom: 10px;       /* Adds a 10px vertical gap between input fields */
+        }
+
+        .signup-box {
+            background-color: white;   /* Sets the container's background to white */
+            padding: 20px;             /* Adds breathing room inside the white box */
+            border-radius: 8px;        /* Softens the corners of the box */
+            box-shadow: 0px 0px 10px rgba(0,0,0,0.1); /* Adds a subtle shadow for a '3D' lifted effect */
+        }
+    </style>
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<div class="container-fluid fb-header"> <!-- 'container-fluid' spans the full width of the screen -->
+    <div class="row align-items-center"> <!-- 'row' starts a grid; 'align-items-center' vertically centers content -->
+
+        <!-- Left: Facebook logo -->
+        <div class="col-md-6"> <!-- Occupies 6 out of 12 columns (half the screen) on medium devices and up -->
+            <div class="fb-title">facebook</div>
+        </div>
+
+        <!-- Right: Login form -->
+        <div class="col-md-6"> <!-- Occupies the other half of the screen -->
+            <!-- 'd-flex': uses Flexbox; 'justify-content-end': pushes content to the right; 'gap-2': adds spacing between children -->
+            <form class="d-flex justify-content-end align-items-center gap-2">
+
+                <!-- Email input -->
+                <!-- 'w-auto' (width: auto) prevents the input from stretching across the whole column -->
+                <input type="text" class="form-control w-auto" placeholder="Email or Username">
+
+                <!-- Password input -->
+                <input type="password" class="form-control w-auto" placeholder="Password">
+
+                <!-- Login button -->
+                <!-- 'btn-light' gives it a white background; 'btn-sm' makes it smaller -->
+                <button class="btn btn-light btn-sm">Login</button>
+            </form>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= MAIN CONTENT ================= -->
+<div class="container mt-5"> <!-- 'container' keeps content centered with margins; 'mt-5' adds a top margin (level 5) -->
+    <div class="row">
+
+        <!-- LEFT SIDE TEXT -->
+        <div class="col-md-6"> <!-- Left column for the marketing text -->
+            <h4>Facebook is useless without friends.</h4>
+            <h5>Make More Friends.</h5>
+
+            <p class="mt-4"> <!-- 'mt-4' adds a medium top margin to separate the paragraph -->
+                Facebook helps you connect and share with people in your life.
+            </p>
+        </div>
+
+        <!-- RIGHT SIDE SIGNUP FORM -->
+        <div class="col-md-6"> <!-- Right column for the signup card -->
+
+            <div class="signup-box"> <!-- Uses our custom white box styling -->
+
+                <h3>Create an Account</h3>
+                <p>It's free and always will be.</p>
+
+                <!-- Name row -->
+                <div class="row"> <!-- Nested row to split first and last name onto one line -->
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="First name">
+                    </div>
+                    <div class="col">
+                        <input type="text" class="form-control" placeholder="Last name">
+                    </div>
+                </div>
+
+                <!-- Email -->
+                <input type="email" class="form-control" placeholder="Email">
+
+                <!-- Re-enter email -->
+                <input type="email" class="form-control" placeholder="Re-enter Email">
+
+                <!-- Password -->
+                <input type="password" class="form-control" placeholder="Password">
+
+                <!-- Date of birth -->
+                <input type="date" class="form-control"> <!-- Provides a native calendar picker -->
+
+                <!-- Gender -->
+                <div class="mb-3"> <!-- 'mb-3' adds bottom margin for spacing -->
+                    <label><input type="radio" name="gender"> Male</label>
+                    <label class="ms-3"><input type="radio" name="gender"> Female</label> <!-- 'ms-3' adds a margin-start (left) -->
+                </div>
+
+                <!-- Terms text -->
+                <small> <!-- Displays text in a smaller, secondary font size -->
+                    By clicking Sign Up, you agree to our Terms.
+                </small>
+
+                <!-- Signup button -->
+                <br><br>
+                <button class="btn btn-success">Sign Up</button> <!-- 'btn-success' makes the button green -->
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

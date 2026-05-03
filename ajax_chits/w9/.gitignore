@@ -1,0 +1,28 @@
+    # Node modules (BIG mistake if you upload this)
+node_modules/
+
+# Logs
+logs/
+*.log
+npm-debug.log*
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment variables (VERY important)
+.env
+
+# MongoDB local files (if any)
+data/
+*.db
+
+# VS Code settings
+.vscode/
+
+# Temporary files
+temp/
+tmp/
+
+# Package lock (optional — include if team project)
+# package-lock.json

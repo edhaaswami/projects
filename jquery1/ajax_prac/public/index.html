@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <h2>todolist</h2>
+
+    <input type="text" id="taskinput" placeholder="enter task">
+    <button onclick="addtask()">add</button>
+
+    <ul id="tasklist"></ul>
+
+    <script>
+        window.onload = loadtasks;
+
+        function loadtasks() {
+            fetch("/todos")
+            .then(res => res.json())
+            .then(data =>{
+                let container = document.getElementById("tasklist");
+                container.innerHTML = "";
+
+                data.forEach(task => {
+                    let li = document.createElement("li");
+
+                    li.innerHTML = `
+                    ${task.text}
+                    <button onclick="edittask(${task.id})">edit</button>
+                    <button onlclick="deletetask(${task.id})"delete</button>
+                    `;
+
+                    container.appendChild(li);
+                });
+            })
+        }
+
+        function addtask() {
+            let text = document.getElementById("tasklist").value;
+
+            fetch("/todos", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({text});
+            })
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Student App</title>
+</head>
+<body>
+
+<h1>Student Database</h1>
+
+<button onclick="go('/insert')">Insert Data</button>
+<button onclick="go('/all')">Show All + Count</button>
+<button onclick="go('/dsbda')">DSBDA > 20</button>
+<button onclick="go('/update')">Update Marks</button>
+<button onclick="go('/all25')">All Subjects > 25</button>
+<button onclick="go('/less40')">Less than 40</button>
+<button onclick="go('/delete')">Delete Student</button>
+<button onclick="go('/table')">Show Table</button>
+
+<pre id="output"></pre>
+
+<script>
+function go(route) {
+    fetch(route)
+    .then(res => res.text())
+    .then(data => document.getElementById("output").innerHTML = data);
+}
+</script>
+
+</body>
+</html>

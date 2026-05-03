@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>User List</title>
+</head>
+<body>
+
+<h2>User List</h2>
+<ul id="userList"></ul>
+
+<script>
+fetch('/api/users')
+    .then(res => res.json())
+    .then(data => {
+        let container = document.getElementById("userList");
+
+        data.forEach(emp => {
+            let card = document.createElement("div");
+            card.className = "card";
+
+            card.innerHTML = `
+                <img src = "${emp.image}">
+                <div>
+                    <h3>${emp.name}</h3>
+                    <p>designamtio: <b>${emp.designamtion}</b></p>
+                    <p>designamtio: <b>${emp.designamtion}</b></p>
+                    <p>designamtio: <b>${emp.designamtion}</b></p>
+                    <p>designamtio: <b>${emp.designamtion}</b></p>
+                </div>
+            `;
+
+            container.appendChild(card);
+        });
+    })
+    .catch(err => console.log(err))
+</script>
+                                                
+</body>
+</html>
+
+.then(res => res.json())
+    .then(data => {
+        let list = document.getElementById("userList");
+
+        data.forEach(user => {
+            let li = document.createElement("li");
+            li.textContent = user.name + " (Age: " + user.age + ")";
+            list.appendChild(li);
+        });
+    })
+    .catch(err => console.log(err));

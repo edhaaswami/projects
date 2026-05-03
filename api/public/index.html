@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Weather App</title>
+</head>
+<body>
+
+<h2>Weather Forecast</h2>
+
+<input type="text" id="lat" placeholder="Enter Latitude">
+<input type="text" id="lon" placeholder="Enter Longitude">
+<button onclick="getWeather()">Get Weather</button>
+
+<p id="result"></p>
+
+<script>
+function validateInput(value) {
+    return /^-?\d+(\.\d+)?$/.test(value);
+}
+
+async function getWeather() {
+    const lat = document.getElementById("lat").value;
+    const lon = document.getElementById("lon").value;
+    const result = document.getElementById("result");
+
+    // 🔴 Validation
+    if (!validateInput(lat) || !validateInput(lon)) {
+        result.innerHTML = "❌ Error: Only numeric values allowed!";
+        return;
+    }
+
+    try {
+        const res = await fetch(`http://localhost:3000/weather?lat=${lat}&lon=${lon}`);
+        const data = await res.json();
+
+        if (data.error) {
+            result.innerHTML = "❌ " + data.error;
+            return;
+        }
+
+        result.innerHTML = `
+            ✅ Temperature: ${data.current_weather.temperature}°C <br>
+            Wind Speed: ${data.current_weather.windspeed}
+        `;
+
+    } catch (err) {
+        result.innerHTML = "❌ Server Error";
+    }
+}
+</script>
+
+</body>
+</html>

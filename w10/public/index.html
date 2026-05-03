@@ -1,0 +1,110 @@
+    <!DOCTYPE html>
+    <html>
+    <head>
+        <title>To-Do App (AJAX)</title>
+
+        <style>
+            body {
+                font-family: Arial;
+                text-align: center;
+                margin-top: 50px;
+                background: #f4f6f8;
+            }
+
+            input {
+                padding: 10px;
+                width: 200px;
+            }
+
+            button {
+                padding: 8px;
+                margin: 5px;
+                cursor: pointer;
+            }
+
+            li {
+                list-style: none;
+                margin: 10px;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    <h2>📝 To-Do List</h2>
+
+    <input type="text" id="taskInput" placeholder="Enter task">
+    <button onclick="addTask()">Add</button>
+
+    <ul id="taskList"></ul>
+
+    <script>
+
+    // Load tasks on page load
+    window.onload = loadTasks;
+
+    // GET tasks
+    function loadTasks() {
+        fetch("/todos")
+            .then(res => res.json())
+            .then(data => {
+                let list = document.getElementById("taskList");
+                list.innerHTML = "";
+
+                data.forEach(task => {
+                    let li = document.createElement("li");
+
+                    li.innerHTML = `
+                        ${task.text}
+                        <button onclick="editTask(${task.id})">Edit</button>
+                        <button onclick="deleteTask(${task.id})">Delete</button>
+                    `;
+
+                    list.appendChild(li);
+                });
+            });
+    }
+
+    // ADD task
+    function addTask() {
+        let text = document.getElementById("taskInput").value;
+
+        fetch("/todos", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text })
+        })
+        .then(() => {
+            document.getElementById("taskInput").value = "";
+            loadTasks();
+        });
+    }
+
+    // DELETE task
+    function deleteTask(id) {
+        fetch(`/todos/${id}`, {
+            method: "DELETE"
+        })
+        .then(() => loadTasks());
+    }
+
+    // UPDATE task
+    function editTask(id) {
+        let newText = prompt("Enter new task:");
+
+        fetch(`/todos/${id}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json"
+            },
+            body: JSON.stringify({ text: newText })
+        })
+        .then(() => loadTasks());
+    }
+
+    </script>
+
+    </body>
+    </html>

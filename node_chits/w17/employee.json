@@ -1,0 +1,26 @@
+[
+  {
+    "id": 1,
+    "name": "Tanaya",
+    "designation": "Software Engineer",
+    "department": "IT",
+    "salary": 60000,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "id": 2,
+    "name": "Sharv",
+    "designation": "Data Analyst",
+    "department": "Analytics",
+    "salary": 50000,
+    "image": "https://via.placeholder.com/100"
+  },
+  {
+    "id": 3,
+    "name": "Ved",
+    "designation": "HR Manager",
+    "department": "HR",
+    "salary": 55000,
+    "image": "/images/image.png"
+  }
+]
