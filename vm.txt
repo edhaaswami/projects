@@ -1,0 +1,12 @@
+sudo apt update
+sudo apt install openssh-server -y
+sudo service ssh start
+
+ifconfig
+ping 
+
+ssh tanaya@10.0.2.x
+exit
+
+scp new.txt tanaya@10.0.2.x:~
+
